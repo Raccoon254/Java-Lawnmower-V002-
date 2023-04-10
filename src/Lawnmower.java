@@ -6,6 +6,7 @@ public class Lawnmower {
     private int column;
     private State state;
     private Lawn lawn;
+    private Cutter cutter;
     private List<Observer> observers;
 
     public Lawnmower(Lawn lawn) {
@@ -14,10 +15,19 @@ public class Lawnmower {
         this.column = 0;
         this.state = new MowingRightState(this);
         this.observers = new ArrayList<>();
+        this.cutter = new Cutter();
+
+
+        // Cut the initial cell
+        cutter.cut();
+        lawn.addCutCell(row, column);
     }
 
     public void move() {
         state.move();
+        cutter.cut();
+        lawn.addCutCell(row, column);
+        System.out.println("At Row->"+row+" Col->"+column);
         notifyObservers();
     }
 

@@ -41,10 +41,12 @@ public class LawnView extends JFrame implements Observer {
                         @Override
                         public void run() {
                             Lawn lawn = lawnmower.getLawn();
-                            for (int i = 0; i < lawn.getRows() * lawn.getColumns(); i++) {
+                            while (lawnmower.getRow() < lawn.getRows() &&
+                                    lawnmower.getColumn() < lawn.getColumns() &&
+                                    lawnmower.getColumn() >= 0) {
                                 lawnmower.move();
                                 try {
-                                    Thread.sleep(100);
+                                    Thread.sleep(50);
                                 } catch (InterruptedException ex) {
                                     break;
                                 }
@@ -73,6 +75,7 @@ public class LawnView extends JFrame implements Observer {
     @Override
     public void update() {
         lawnPanel.repaint();
+        new  Cutter().cut();
     }
 
     private class LawnPanel extends JPanel {
@@ -92,9 +95,22 @@ public class LawnView extends JFrame implements Observer {
 
             g.setColor(Color.GREEN);
             g.fillRect(0, 0, getWidth(), getHeight());
+            g.setColor(new Color(0, 128, 0));
 
-            g.setColor(Color.RED);
+            // Draw the cut grass with a different color
+            g.setColor(new Color(52, 66, 17));
+            for (int row = 0; row < lawn.getRows(); row++) {
+                for (int column = 0; column < lawn.getColumns(); column++) {
+                    if (lawn.isCellCut(row, column)) {
+                        g.fillRect(column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+                    }
+                }
+            }
+
+            // Draw the lawnmower
+            g.setColor(Color.BLUE);
             g.fillRect(lawnmower.getColumn() * cellWidth, lawnmower.getRow() * cellHeight, cellWidth, cellHeight);
         }
+
     }
 }
