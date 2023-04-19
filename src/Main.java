@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         // Create a Lawn with 20 rows and columns
-        Lawn lawn = new Lawn(20, 20);
+        Lawn lawn = new Lawn(10, 10);
 
         // Create a Lawnmower and set it on the Lawn
         Lawnmower lawnmower = new Lawnmower(lawn);

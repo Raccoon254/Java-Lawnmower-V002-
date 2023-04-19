@@ -102,12 +102,24 @@ public class LawnView extends JFrame implements Observer {
             int cellWidth = getWidth() / lawn.getColumns();
             int cellHeight = getHeight() / lawn.getRows();
 
-            g.setColor(Color.GREEN);
+            Color thisColor = new Color(88, 96, 4);
+            g.setColor(thisColor);
             g.fillRect(0, 0, getWidth(), getHeight());
-            g.setColor(new Color(0, 128, 0));
+            Color edgeColor = new Color(0xF5F0F0);
+            g.setColor(edgeColor);
+            // Draw horizontal lines
+            for (int i = 0; i <= lawn.getRows(); i++) {
+                g.drawLine(0, i * cellHeight, getWidth(), i * cellHeight);
+            }
+
+            // Draw vertical lines
+            for (int i = 0; i <= lawn.getColumns(); i++) {
+                g.drawLine(i * cellWidth, 0, i * cellWidth, getHeight());
+            }
 
             // Draw the cut grass with a different color
-            g.setColor(new Color(52, 66, 17));
+            Color cutGrass = new Color(255, 255, 255);
+            g.setColor(cutGrass);
             for (int row = 0; row < lawn.getRows(); row++) {
                 for (int column = 0; column < lawn.getColumns(); column++) {
                     if (lawn.isCellCut(row, column)) {
