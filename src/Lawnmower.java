@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* --This class represents the LawnMower that moves around the lawn cutting grass
+* --It has a state that determines how it moves and its direction
+* --It has a cutter that cuts the grass
+* --It has method like move(),notifyObservers() and registerObserver() together with getters and setters
+*/
 public class Lawnmower {
     private int row;
     private int column;
     private State state;
-    private Lawn lawn;
-    private Cutter cutter;
-    private List<Observer> observers;
+    private final Lawn lawn;
+    private final Cutter cutter;
+    private final List<Observer> observers;
 
     public Lawnmower(Lawn lawn) {
         this.lawn = lawn;

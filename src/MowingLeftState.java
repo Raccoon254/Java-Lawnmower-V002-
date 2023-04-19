@@ -1,5 +1,10 @@
+/*
+* --This is the moving left state, and it implements the state interface
+* --It has a constructor that takes in a Lawnmower object
+* --It ensures the mower moves left
+*/
 public class MowingLeftState implements State {
-    private Lawnmower lawnmower;
+    private final Lawnmower lawnmower;
 
     public MowingLeftState(Lawnmower lawnmower) {
         this.lawnmower = lawnmower;

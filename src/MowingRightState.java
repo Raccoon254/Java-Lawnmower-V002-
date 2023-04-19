@@ -1,5 +1,10 @@
+/*
+* --This is the State interface, and it is implemented by the MowingRightState class
+* --The interface has a method move() that is implemented by the MowingRightState class
+* --The move() method moves the mower to the right
+*/
 public class MowingRightState implements State {
-    private Lawnmower lawnmower;
+    private final Lawnmower lawnmower;
 
     public MowingRightState(Lawnmower lawnmower) {
         this.lawnmower = lawnmower;

@@ -1,5 +1,12 @@
+
+/*
+* --This class is the moving down state, and it is responsible for the mower to shift down at the end of the lawn ie Left & Right
+* --It implements the State interface
+* --It has a constructor that takes in a Lawnmower object
+* --It has a method move() that moves the mower down
+*/
 public class MovingDownState implements State {
-    private Lawnmower lawnmower;
+    private final Lawnmower lawnmower;
 
     public MovingDownState(Lawnmower lawnmower) {
         this.lawnmower = lawnmower;

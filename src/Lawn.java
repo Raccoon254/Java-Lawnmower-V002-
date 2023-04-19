@@ -1,11 +1,15 @@
 import java.awt.Point;
 import java.util.HashSet;
 import java.util.Set;
-
+/*
+* --This class represents the lawn that the LawnMower will cut grass on
+* --It is a 2D grid of cells
+* --It keeps track of which cells have been cut too
+*/
 public class Lawn {
-    private int rows;
-    private int columns;
-    private Set<Point> cutCells;
+    private final int rows;
+    private final int columns;
+    private final Set<Point> cutCells;
 
     public Lawn(int rows, int columns) {
         this.rows = rows;

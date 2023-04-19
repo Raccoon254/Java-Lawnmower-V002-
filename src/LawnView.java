@@ -6,13 +6,22 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/*
+* --This class represents the view of the LawnMower on the Lawn
+* --It has a LawnPanel that displays the Lawn
+* --It has a control panel that has a start and stop button
+* --It has a method like update() and runSimulation() together with getters and setters
+* --It implements the Observer interface
+* --It has a constructor that takes a Lawnmower as a parameter
+* --It has a method like setupControls() that sets up the controls
+*/
 public class LawnView extends JFrame implements Observer {
-    private Lawnmower lawnmower;
-    private LawnPanel lawnPanel;
-    private JButton startButton;
-    private JButton stopButton;
-    private JPanel controlPanel;
-    private ExecutorService executor;
+    private final Lawnmower lawnmower;
+    private final LawnPanel lawnPanel;
+    private final JButton startButton;
+    private final JButton stopButton;
+    private final JPanel controlPanel;
+    private final ExecutorService executor;
     private Future<?> simulationFuture;
 
     public LawnView(Lawnmower lawnmower) {
